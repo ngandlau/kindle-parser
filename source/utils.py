@@ -4,7 +4,7 @@ def get_book_progress(parsed_clippings, book_title):
     clippings_of_book = get_clippings_from_book(
         book_title=book_title,
         parsed_clippings=parsed_clippings,
-        clipping_type=None
+        clipping_type="all"
     )
     max_pos = get_max_position(clippings_of_book)
     second_max_pos = get_second_max_position(clippings_of_book)
@@ -30,7 +30,7 @@ def get_second_max_position(clippings_from_book):
         second_max = max(positions)
     return second_max
         
-def get_clippings_from_book(book_title, parsed_clippings, clipping_type=None):
+def get_clippings_from_book(book_title, parsed_clippings, clipping_type="all"):
     """
     args:
         book_title: a string of the title of a book
@@ -39,7 +39,7 @@ def get_clippings_from_book(book_title, parsed_clippings, clipping_type=None):
     """
     clippings = []
     for clipping in parsed_clippings:
-        if clipping_type is None:
+        if clipping_type == "all":
             if clipping["book_title"] == book_title:
                 clippings.append(clipping)
         else:
@@ -56,17 +56,17 @@ def clippings_to_markdown(book_title, clippings_of_book):
             text += clipping["text"] + "\n\n"
     return text
 
-def create_markdown_from_clippings(parsed_clippings, book_title):
+def create_markdown_from_clippings(parsed_clippings, book_title, clipping_type, output_filename):
     clippings_of_book = get_clippings_from_book(
         book_title=book_title,
         parsed_clippings=parsed_clippings,
-        clipping_type=None
+        clipping_type=clipping_type
     )
     try:
         os.mkdir("output")
     except FileExistsError:
         pass
-    with open(os.path.join("output", book_title + ".md"), "w", encoding="utf-8") as f:
+    with open(os.path.join("output", output_filename), "w", encoding="utf-8") as f:
         text = clippings_to_markdown(
             book_title=book_title,
             clippings_of_book=clippings_of_book

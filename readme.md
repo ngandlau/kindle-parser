@@ -42,7 +42,7 @@ The idea of this project was to automatically generate a formatted markdown `.md
 
 The function that allow you to do this is `create_markdown_from_clippings()`
 
-* `create_markdown_from_clippings(parsed_clippings, book_title)` creates a `.md` file in the subfolder `\output\` of your working directory. This `.md` file includes all your clippings of a certain `book_title`, formatted in markdown. All *highlight* clippings are formatted as a quote, e.g. "> This is a highlight", and all *note* clippings is formatted as normal text, e.g. "This is a note".
+* `create_markdown_from_clippings(parsed_clippings, book_title)` creates a `.md` file in your working director that includes all your clippings of a certain `book_title`, formatted in markdown. All *highlight* clippings are formatted as a quote, e.g. "> This is a highlight", and all *note* clippings is formatted as normal text, e.g. "This is a note".
 
 For example, a `My Clippings.txt` file that looks like this:
 

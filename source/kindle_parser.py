@@ -4,11 +4,11 @@ from datetime import datetime
 def parse_clippings(path_to_clippings_file):
     with open(path_to_clippings_file, "r", encoding="utf8") as file:
         txt = file.read()
-        parsed_clippings = get_clippings(my_clippings_raw=txt)
+        parsed_clippings = get_clippings(my_clippings_text=txt)
         return parsed_clippings
 
-def get_clippings(my_clippings_raw):
-    clippings = my_clippings_raw.split("==========")
+def get_clippings(my_clippings_text):
+    clippings = my_clippings_text.split("==========")
     clippings = [clean_clipping(x) for x in clippings if is_valid_clipping(x)]
     
     parsed_clippings = []
@@ -49,10 +49,14 @@ def clean_clipping(clipping):
     return clipping
 
 def is_valid_clipping(clipping):
+    is_valid = True
     if len(clipping) == 1:
-        return False
-    else:
-        return True
+        is_valid = False
+    if clipping == "\n":
+        is_valid = False
+    if clipping == "":
+        is_valid = False
+    return is_valid
     
 def get_metadata(clipping):
     metadata = clipping.split("\n\n")[0]
