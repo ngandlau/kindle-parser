@@ -4,7 +4,9 @@ Functions for parsing Kindle clippings.
 
 ## Usage 
 
-Disclaimer: The functions work for *German* Kindles. If you want it to work for other languages, you have to make changes in the `replace_ger_to_eng_month()` functions in `parser.py`
+For an illustrative example of how to use the parser and the utility functions, see `source/example.ipynb`.
+
+> Disclaimer: The functions work for *German* Kindles. If you want it to work for other languages, you have to make changes in the `replace_ger_to_eng_month()` functions in `parser.py`
 
 ### Parsing
 
