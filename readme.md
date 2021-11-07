@@ -60,18 +60,7 @@ The function that creates a markdown document from a book's parsed clippings is 
 
 Suppose our `My Clippings.txt` file looks like this:
 
-```
-Levels of Life (Barnes, Julian)
-- Ihre Markierung auf Seite 28 | bei Position 284-286 | Hinzugefügt am Freitag, 8. Oktober 2021 20:06:02
-
-I think it struck everybody that here we’d come 240,000 miles to see the Moon and it was the Earth that was really worth looking at.
-==========
-Levels of Life (Barnes, Julian)
-- Ihre Markierung auf Seite 31 | bei Position 297-300 | Hinzugefügt am Freitag, 8. Oktober 2021 20:07:53
-
-You put together two people who have not been put together before; and sometimes the world is changed, sometimes not. They may crash and burn, or burn and crash. But sometimes, something new is made, and then the world is changed. Together, in that first exaltation, that first roaring sense of uplift, they are greater than their two separate selves. Together, they see further, and they see more clearly.
-==========
-```
+![](img/example-input.png)
 
 then the following sequence of functions:
 
@@ -91,10 +80,4 @@ then the following sequence of functions:
 
 would create a document named `quotes-levels-of-life.md` in a subfolder named `/output/` in your current working directory. That file would look like this:
 
-```
-# Levels of Life (Barnes, Julian)
-
-> I think it struck everybody that here we’d come 240,000 miles to see the Moon and it was the Earth that was really worth looking at.
-
-> You put together two people who have not been put together before; and sometimes the world is changed, sometimes not. They may crash and burn, or burn and crash. But sometimes, something new is made, and then the world is changed. Together, in that first exaltation, that first roaring sense of uplift, they are greater than their two separate selves. Together, they see further, and they see more clearly.
-```
+![](img/example-output.png)
