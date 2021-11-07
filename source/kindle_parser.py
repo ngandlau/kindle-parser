@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-def parse_clippings(path_to_clippings_file):
+def parse_clippings_file(path_to_clippings_file):
     with open(path_to_clippings_file, "r", encoding="utf8") as file:
         txt = file.read()
         parsed_clippings = get_clippings(my_clippings_text=txt)
