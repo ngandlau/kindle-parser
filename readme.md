@@ -77,6 +77,7 @@ then the following sequence of functions:
 
 ```
 >>> import kindle_parser as parser
+>>> import utils
 >>> path_to_clippings_file = "My Clippings.txt"
 >>> parsed_clippings = parser.parse_clippings(path_to_clippings_file)
 >>> book_titles = utils.get_unique_books(parsed_clippings)
