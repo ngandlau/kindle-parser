@@ -45,7 +45,7 @@ The file `utils.py` includes functions for doing stuff with the parsed clippings
 
 ### Creating a markdown document with your clippings
 
-The initial idea of this project was to automatically generate a formatted markdown `.md` file of the quotes that I highlight on my kindle. With my favorite quotes (clippings) already in a markdown document, publishing them onto my [personal website](www.nilsgandlau.de) is as easy as a simple click.
+The initial idea of this project was to automatically generate a formatted markdown `.md` file of the quotes that I highlight on my kindle. The formatted markdown document with my favorite quotes of a book can then easily be published on my [personal blog](https://www.nilsgandlau.de).
 
 The function that creates a markdown document from a book's parsed clippings is `create_markdown_from_clippings()`:
 
