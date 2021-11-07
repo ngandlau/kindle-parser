@@ -74,10 +74,10 @@ then the following sequence of functions:
       parsed_clippings=parsed_clippings,
       book_title=book_titles[0],
       clipping_type="all",
-      output_filename="quotes-levels-of-life.md"
+      output_filename="quotes_levels_of_life.md"
     )
 ```
 
-would create a document named `quotes-levels-of-life.md` in a subfolder named `/output/` in your current working directory. That file would look like this:
+would create a document named `quotes_levels_of_life.md` in a subfolder named `/output/` in your current working directory. That file would look like this:
 
 ![](img/example-output.png)
