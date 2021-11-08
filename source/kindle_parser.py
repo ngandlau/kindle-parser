@@ -77,9 +77,17 @@ def get_text(clipping):
 
 def get_position(clipping):
     metadata = get_metadata(clipping)
-    position = re.search("Position\ \d+-\d+", metadata).group(0)
-    start_position = re.search("\d+-", position).group(0)[:-1]
-    end_position = re.search("-\d+",position).group(0)[1:]
+    position = re.search("Position\ \d+-\d+", metadata)
+    if position is None:
+        # then the clipping doesn't have an end position.
+        # E.g. "Position 565" instead of "Position 565-566"
+        position = re.search("Position\ \d+", metadata).group(0)
+        start_position = re.search("\d+", position).group(0)
+        end_position = 0
+    else:
+        position = position.group(0)
+        start_position = re.search("\d+-", position).group(0)[:-1]
+        end_position = re.search("-\d+",position).group(0)[1:]
     return {"start": int(start_position), "end": int(end_position)}
 
 def get_date(clipping):
