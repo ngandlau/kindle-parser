@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+import difflib
 
 def parse_clippings_file(path_to_clippings_file):
     with open(path_to_clippings_file, "r", encoding="utf8") as file:
@@ -7,15 +8,48 @@ def parse_clippings_file(path_to_clippings_file):
         parsed_clippings = get_clippings(my_clippings_text=txt)
         return parsed_clippings
 
+def first_n_sentences(string, n):
+    first_n_sentences = string.split(".")[:n]
+    return first_n_sentences
+
+def get_overlap(s1, s2):
+    s = difflib.SequenceMatcher(None, s1, s2)
+    pos_a, pos_b, size = s.find_longest_match(0, len(s1), 0, len(s2)) 
+    return s1[pos_a:pos_a+size]
+
 def get_clippings(my_clippings_text):
     clippings = my_clippings_text.split("==========")
     clippings = [clean_clipping(x) for x in clippings if is_valid_clipping(x)]
     
+    last_clipping_text = None
     parsed_clippings = []
     for clipping in clippings:
         book_title = get_book_title(clipping)
         date = get_date(clipping)
         text = get_text(clipping)
+
+        # check for duplicate highlights
+        if last_clipping_text is not None:
+            is_duplicate = False
+            if last_clipping_text in text or text in last_clipping_text:
+                parsed_clippings.pop()
+
+            # # check whether first 2 sentences are equal
+            # first_n_sentences_last = first_n_sentences(last_clipping_text, 2)
+            # first_n_sentences_curr = first_n_sentences(text, 2)
+            # if first_n_sentences_last == first_n_sentences_curr:
+            #     is_duplicate = True
+            #     parsed_clippings.pop()
+
+            # # check for overlap within string
+            # if not is_duplicate:
+            #     overlap = get_overlap(text, last_clipping_text)
+            #     # remove last highlight if overlap is more than 80%
+            #     if len(overlap) > (0.8)*len(text):
+            #         is_duplicate = True
+            #         parsed_clippings.pop()
+        
+        last_clipping_text = text
 
         if is_clipping_highlight(clipping):
             clipping_type = "highlight"
