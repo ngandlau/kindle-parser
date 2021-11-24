@@ -2,7 +2,7 @@
 
 Functions for parsing Kindle clippings and turning them into markdown-formatted documents. 
 
-I use this programm to help me write book summaries, like [this](https://www.nilsgandlau.de/posts/levels-of-life.html) or [this](https://www.nilsgandlau.de/posts/attached.html) one found on my [personal website](https://www.nilsgandlau.de/).
+I use this programm to help me write book summaries like [this](https://www.nilsgandlau.de/posts/levels-of-life.html) or [this](https://www.nilsgandlau.de/posts/attached.html) one on my [personal website](https://www.nilsgandlau.de/).
 
 ## Usage
 
