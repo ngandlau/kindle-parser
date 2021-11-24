@@ -4,6 +4,32 @@ Functions for parsing Kindle clippings and turning them into markdown-formatted 
 
 I use this programm to help me write book summaries like [this](https://www.nilsgandlau.de/posts/levels-of-life.html) or [this](https://www.nilsgandlau.de/posts/attached.html) one on my [personal website](https://www.nilsgandlau.de/).
 
+## Example
+
+Suppose your Kindle's `My Clippings.txt` file looks like this:
+
+![](img/example-input.png)
+
+then the following sequence of functions:
+
+```
+>>> import kindle_parser as parser
+>>> import utils
+>>> path_to_clippings_file = "My Clippings.txt"
+>>> parsed_clippings = parser.parse_clippings(path_to_clippings_file)
+>>> book_titles = utils.get_unique_books(parsed_clippings)
+>>> utils.create_markdown_from_clippings(
+      parsed_clippings=parsed_clippings,
+      book_title=book_titles[0],
+      clipping_type="all",
+      output_filename="quotes_levels_of_life.md"
+    )
+```
+
+would create a markdown-document named `quotes_levels_of_life.md` in a subfolder of your current working directory:
+
+![](img/example-output.png)
+
 ## Usage
 
 See `source/example.ipynb` for an example of how to use the code.
@@ -58,28 +84,3 @@ The function that creates a markdown document from a book's parsed clippings is 
 * `clipping_type`: one of `"all"`, `"highlight"`, or `"note"`
 * `output_filename`: the name of the markdown file that is generated. Must end with `.md`. For example, `output_filename="book_highlights.md"`
 
-#### Example
-
-Suppose our `My Clippings.txt` file looks like this:
-
-![](img/example-input.png)
-
-then the following sequence of functions:
-
-```
->>> import kindle_parser as parser
->>> import utils
->>> path_to_clippings_file = "My Clippings.txt"
->>> parsed_clippings = parser.parse_clippings(path_to_clippings_file)
->>> book_titles = utils.get_unique_books(parsed_clippings)
->>> utils.create_markdown_from_clippings(
-      parsed_clippings=parsed_clippings,
-      book_title=book_titles[0],
-      clipping_type="all",
-      output_filename="quotes_levels_of_life.md"
-    )
-```
-
-would create a document named `quotes_levels_of_life.md` in a subfolder named `/output/` in your current working directory. That file would look like this:
-
-![](img/example-output.png)
